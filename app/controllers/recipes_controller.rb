@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
   end
 
   def create 
-    recipe_params = { name: params[:name], description: params[:description], dish_type: params[:dish_type] }
+    recipe_params = { name: params[:recipe][:name], description: params[:recipe][:description], dish_type: params[:recipe][:dish_type] }
     recipe = Recipe.create(recipe_params)
     params[:recipe][:ingredients].each do |ingredient|
       recipe.ingredients << Ingredient.find_by_name(ingredient)
