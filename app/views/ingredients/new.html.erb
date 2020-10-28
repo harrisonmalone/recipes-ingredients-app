@@ -1,0 +1,10 @@
+<% if flash[:message] %>
+  <p style="color: red"><%= flash[:message] %></p>
+<% end %>
+
+<%= form_with(model: @ingredient, class: "form") do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, placeholder: "500 grams of mince" %>
+  <%= form.submit "Create Ingredient", id: "submit" %>
+  <%= link_to "Create a recipe", new_recipe_path %>
+<% end %>

@@ -1,0 +1,16 @@
+<% if flash[:message] %>
+  <p style="color: red"><%= flash[:message] %></p>
+<% end %>
+
+<%= form_with(model: @recipe, class: "form") do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+  <%= form.label :dish_type %>
+  <%= form.text_field :dish_type %>
+  <%= form.label :ingredients %>
+  <%= form.select :ingredients, options_for_select(@ingredients), {:include_blank => false, include_hidden: false}, {:multiple => true, class: "select"} %>
+  <p>Don't see an ingredient that you need? <%= link_to "Create an ingredient", new_ingredient_path %></p>
+  <%= form.submit "Create Recipe", id: "submit" %>
+<% end %>
